@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mutia Drill 1</title>
+
+    <link rel="stylesheet" href="https://pyscript.net/releases/2024.1.1/core.css">
+    <script type="module" src="https://pyscript.net/releases/2024.1.1/core.js"></script>
+
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            background-color: aliceblue;
+            padding: 40px;
+            max-width: 400px;
+            margin:auto;
+            border: 1px solid plum;
+            box-shadow: 0 0 10px powderblue;
+        }
+        h2{
+            text-align: center;
+            color: rgb(100, 100, 180);
+        }
+        input{
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #88d5e2;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        button{
+            width: 100%;
+            padding: 10px;
+            background-color: white;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover{
+            background-color: rgb(102, 255, 255);
+        }
+        p{
+            font-size: 16px;
+            margin-top: 10px;
+        }
+        #average, #result{
+            font-weight: bold;
+            color: darkblue;
+        }
+    </style>
+</head>
+<body>
+    <h2>Simple Average Calculator</h2>
+
+    <p>Enter two scores:</p>
+    <input id="score1" type="text" placeholder="Score 1">
+    <input id="score2" type="text" placeholder="Score 2">
+    <button id="calcBtn">Calculate</button>
+
+    <p>Average: <span id="average"></span></p>
+    <p>Passed?: <span id="result"></span></p>
+
+    <script type="py">
+        from js import document
+
+        def calculate(event):
+            try:
+                s1 = float(document.getElementById("score1").value)
+                s2 = float(document.getElementById("score2").value)
+                avg = (s1 + s2) / 2
+
+                document.getElementById("average").innerText = f"{avg:.2f}"
+                if avg >= 75:
+                    document.getElementById("result").innerText = "Yes ✅"
+                else:
+                    document.getElementById("result").innerText = "No ❌"
+            except:
+                document.getElementById("average").innerText = "Invalid input"
+                document.getElementById("result").innerText = "-"
+
+        document.getElementById("calcBtn").addEventListener("click", calculate)
+    </script>
+
+
+<script type="py" src="main.py"></script>
+
+</body>
+</html>
